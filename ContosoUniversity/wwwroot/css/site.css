@@ -1,8 +1,15 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Inconsolata', monospace;
+    color: darkblue;
+    background-color: lightgray;
 }
 
+.jumbotron {
+    color: white;
+    background-color: #ff1414;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -10,6 +17,12 @@
     padding-right: 15px;
 }
 
+nav.navbar{
+    background-color:#ff1414;
+}
+.navbar-toggle {
+    background-color: #ff1414;
+}
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
