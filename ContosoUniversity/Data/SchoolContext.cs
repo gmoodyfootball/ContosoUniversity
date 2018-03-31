@@ -8,11 +8,16 @@ namespace ContosoUniversity.Data
         public SchoolContext(DbContextOptions<SchoolContext> options) : base(options)
         {
         }
+
         //An entity set typically corresponds to a database table
         //An entity corresponds to a row in the table
         public DbSet<Course> Courses { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<OfficeAssignment> OfficeAssignments { get; set; }
+        public DbSet<CourseAssignment> CourseAssignments { get; set; }
 
         //This is to prevent the Database from naming the columns incorrectly (With plural names, instead of singular)
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -20,6 +25,13 @@ namespace ContosoUniversity.Data
             modelBuilder.Entity<Course>().ToTable("Course");
             modelBuilder.Entity<Enrollment>().ToTable("Enrollment");
             modelBuilder.Entity<Student>().ToTable("Student");
+            modelBuilder.Entity<Department>().ToTable("Department");
+            modelBuilder.Entity<Instructor>().ToTable("Instructor");
+            modelBuilder.Entity<OfficeAssignment>().ToTable("OfficeAssignment");
+            modelBuilder.Entity<CourseAssignment>().ToTable("CourseAssignment");
+
+            modelBuilder.Entity<CourseAssignment>()
+                .HasKey(c => new { c.CourseID, c.InstructorID });
         }
     }
 }
